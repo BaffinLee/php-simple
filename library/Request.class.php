@@ -22,6 +22,13 @@ class Request
         return $_SERVER['REQUEST_METHOD'];
     }
 
+    public static function ip ()
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) return $_SERVER['HTTP_CLIENT_IP'];
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) return $_SERVER['HTTP_X_FORWARDED_FOR'];
+        else return $_SERVER['REMOTE_ADDR'];
+    }
+
     public static function header ($name, $default = null)
     {
         $name = strtoupper(str_replace('-', '_', $name));
