@@ -16,6 +16,18 @@ Simple php mvc framework supports 5.3+
 
 ```
 
+*note*: 
+
+- public dir should be exposed to public while any other dir should not.
+- public/index.php should be the only entry of your app, do not expose index.html to user directly.
+- if you want to support pathinfo mode or url rewrite, change library/Route.class.php to do so. It's not supported by default.
+
+## Route
+
+`$_GET['c']` is controller, `$_GET['a']` is action, default are index.
+
+for example the url: `index.php?c=user&a=info`, means `infoAction` in `UserController` will handle this request.
+
 ## Autoload
 
 core classes of framework will be loaded automaticly.
@@ -31,12 +43,6 @@ core classes of framework will be loaded automaticly.
 - `Service`, base class of service, empty by default
 - `Route`, helper class for route
 - `HttpRequest`, wrap for curl
-
-## Route
-
-`$_GET['c']` is controller, `$_GET['a']` is action, default are index
-
-for example the url: `index.php?c=user&a=info`, means `infoAction` in `UserController` will handle this request.
 
 ## Loader
 
